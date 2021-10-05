@@ -94,16 +94,16 @@ public class Employees {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) throws ParseException {
-        this.dateOfBirth = dateFormatSql(dateOfBirth);
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Date getDateOfJoining() {
         return dateOfJoining;
     }
 
-    public void setDateOfJoining(String dateOfJoining) throws ParseException {
-        this.dateOfJoining = dateFormatSql(dateOfJoining);
+    public void setDateOfJoining(Date dateOfJoining) {
+        this.dateOfJoining = dateOfJoining;
     }
 
     public int getSalary() {
@@ -124,17 +124,17 @@ public class Employees {
 
     @Override
     public String toString() {
-        return "Employees { " +
-                "employeeID = " + employeeID +
-                ", namePrefix = '" + namePrefix + '\'' +
-                ", firstName = '" + firstName + '\'' +
-                ", middleInitial = " + middleInitial +
-                ", lastName = '" + lastName + '\'' +
-                ", gender = " + gender +
-                ", email = '" + email + '\'' +
-                ", dateOfBirth = " + dateOfBirth +
-                ", dateOfJoining = " + dateOfJoining +
-                ", salary = " + salary +
+        return "Employees{" +
+                "employeeID=" + employeeID +
+                ", namePrefix='" + namePrefix + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", middleInitial=" + middleInitial +
+                ", lastName='" + lastName + '\'' +
+                ", gender=" + gender +
+                ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", dateOfJoining=" + dateOfJoining +
+                ", salary=" + salary +
                 '}';
     }
 }
