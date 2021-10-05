@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmployeesTest {
 
     @Test
-    public void dateFormatSqlTest() throws ParseException {
+    public void dateFormatSqlTestPass() throws ParseException {
         Employees em = new Employees();
         String dob1 = "3/4/2000";
         Date dob2 = Date.valueOf("2000-3-4");
