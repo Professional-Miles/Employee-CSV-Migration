@@ -1,6 +1,8 @@
 package com.spartaglobal.model;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Employees {
 
@@ -92,16 +94,16 @@ public class Employees {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setDateOfBirth(String dateOfBirth) throws ParseException {
+        this.dateOfBirth = dateFormatSql(dateOfBirth);
     }
 
     public Date getDateOfJoining() {
         return dateOfJoining;
     }
 
-    public void setDateOfJoining(Date dateOfJoining) {
-        this.dateOfJoining = dateOfJoining;
+    public void setDateOfJoining(String dateOfJoining) throws ParseException {
+        this.dateOfJoining = dateFormatSql(dateOfJoining);
     }
 
     public int getSalary() {
@@ -110,6 +112,14 @@ public class Employees {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    public Date dateFormatSql(String date) throws ParseException {
+
+        java.util.Date dateOriginal = new SimpleDateFormat("MM/dd/yyyy").parse(date);
+        java.sql.Date sqlDate = new java.sql.Date(dateOriginal.getTime());
+        return sqlDate;
+
     }
 
     @Override
