@@ -6,22 +6,22 @@ import java.text.SimpleDateFormat;
 
 public class Employees {
 
-    private int employeeID;
+    private Integer employeeID;
     private String namePrefix;
     private String firstName;
-    private char middleInitial;
+    private Character middleInitial;
     private String lastName;
-    private char gender;
+    private Character gender;
     private String email;
     private Date dateOfBirth;
     private Date dateOfJoining;
-    private int salary;
+    private Integer salary;
 
     public Employees() {
     }
 
-    public Employees(int employeeID, String namePrefix, String firstName, char middleInitial, String lastName, char gender,
-                     String email, Date dateOfBirth, Date dateOfJoining, int salary) {
+    public Employees(Integer employeeID, String namePrefix, String firstName, Character middleInitial, String lastName, Character gender,
+                     String email, Date dateOfBirth, Date dateOfJoining, Integer salary) {
         this.employeeID = employeeID;
         this.namePrefix = namePrefix;
         this.firstName = firstName;
@@ -114,7 +114,7 @@ public class Employees {
         this.salary = salary;
     }
 
-    public Date dateFormatSql(String date) throws ParseException {
+    public static Date dateFormatSql(String date) throws ParseException {
 
         java.util.Date dateOriginal = new SimpleDateFormat("MM/dd/yyyy").parse(date);
         java.sql.Date sqlDate = new java.sql.Date(dateOriginal.getTime());
@@ -124,17 +124,17 @@ public class Employees {
 
     @Override
     public String toString() {
-        return "Employees{" +
-                "employeeID=" + employeeID +
-                ", namePrefix='" + namePrefix + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", middleInitial=" + middleInitial +
-                ", lastName='" + lastName + '\'' +
-                ", gender=" + gender +
-                ", email='" + email + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", dateOfJoining=" + dateOfJoining +
-                ", salary=" + salary +
+        return "Employees { '\n'" +
+                "employeeID = " + employeeID +
+                ", namePrefix = '" + namePrefix + '\'' +
+                ", firstName = '" + firstName + '\'' +
+                ", middleInitial = " + middleInitial +
+                ", lastName = '" + lastName + '\'' +
+                ", gender = " + gender +
+                ", email = '" + email + '\'' +
+                ", dateOfBirth = " + dateOfBirth +
+                ", dateOfJoining = " + dateOfJoining +
+                ", salary = " + salary +
                 '}';
     }
 }
