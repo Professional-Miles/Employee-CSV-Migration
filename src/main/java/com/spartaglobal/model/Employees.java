@@ -3,6 +3,7 @@ package com.spartaglobal.model;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 public class Employees {
 
@@ -112,6 +113,22 @@ public class Employees {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public int hashCode() {
+        final int PRIME = 31;
+        int hash = 3;
+        hash = PRIME * hash + (this.employeeID != null ? this.employeeID.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Employees employee = (Employees) obj;
+        return employeeID == employee.employeeID;
     }
 
     @Override
