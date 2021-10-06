@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class DataHandler {
 
@@ -17,6 +18,8 @@ public class DataHandler {
 
     }
 
+
+
     public static Employees employeePopulate (String data) throws ParseException {
 
         String[] empList = data.split(",");
@@ -24,6 +27,18 @@ public class DataHandler {
                 empList[6], dateFormatSql(empList[7]), dateFormatSql(empList[8]),Integer.valueOf(empList[9]));
 
         return emp;
+    }
+
+    public static void employeeListDuplicateChecker (ArrayList<Employees> data) {
+
+        HashSet<Employees> uniqueElements = new HashSet<>(data);
+        int nSize = uniqueElements.size();
+        int oSize = data.size();
+        data.clear();
+        data.addAll(uniqueElements);
+        int dupeAmount = oSize - nSize;
+        System.out.println("Original number of Employee entries: " + oSize + '\n' + "Valid number of Employee entries: " + nSize + '\n' + "Number of duplicate entries: " + dupeAmount);
+
     }
 
 

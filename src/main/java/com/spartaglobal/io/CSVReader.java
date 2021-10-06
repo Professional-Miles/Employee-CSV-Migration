@@ -7,6 +7,7 @@ import com.spartaglobal.model.Employees;
 import java.io.*;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class CSVReader {
 
@@ -26,7 +27,7 @@ public class CSVReader {
             e.printStackTrace();
         }
 
-        System.out.println(employeesList);
+        DataHandler.employeeListDuplicateChecker(employeesList);
 
     }
 

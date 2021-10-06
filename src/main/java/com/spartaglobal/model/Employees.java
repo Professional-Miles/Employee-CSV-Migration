@@ -35,6 +35,10 @@ public class Employees {
         this.salary = salary;
     }
 
+    public Employees(Integer employeeID){
+        this.employeeID = employeeID;
+    }
+
     public int getEmployeeID() {
         return employeeID;
     }
@@ -117,18 +121,21 @@ public class Employees {
 
     @Override
     public int hashCode() {
-        final int PRIME = 31;
-        int hash = 3;
-        hash = PRIME * hash + (this.employeeID != null ? this.employeeID.hashCode() : 0);
-        return hash;
+
+        return Objects.hash(employeeID);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Employees employee = (Employees) obj;
-        return employeeID == employee.employeeID;
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Employees guest = (Employees) o;
+        return Objects.equals(employeeID, ((Employees) o).employeeID);
     }
 
     @Override
