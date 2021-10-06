@@ -1,4 +1,4 @@
-package com.spartaglobal.reader;
+package com.spartaglobal.io;
 
 
 import com.spartaglobal.control.DataHandler;
