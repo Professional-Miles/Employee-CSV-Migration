@@ -114,14 +114,6 @@ public class Employees {
         this.salary = salary;
     }
 
-    public static Date dateFormatSql(String date) throws ParseException {
-
-        java.util.Date dateOriginal = new SimpleDateFormat("MM/dd/yyyy").parse(date);
-        java.sql.Date sqlDate = new java.sql.Date(dateOriginal.getTime());
-        return sqlDate;
-
-    }
-
     @Override
     public String toString() {
         return "Employees { '\n'" +
