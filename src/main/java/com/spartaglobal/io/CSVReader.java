@@ -5,13 +5,13 @@ import com.spartaglobal.control.DataHandler;
 import com.spartaglobal.model.Employees;
 
 import java.io.*;
+
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class CSVReader {
 
-    public static void main(String[] args) {
+    public static void cvsRead(){
 
         String line = null;
         ArrayList<Employees> employeesList = new ArrayList<>();
@@ -30,6 +30,5 @@ public class CSVReader {
         DataHandler.employeeListDuplicateChecker(employeesList);
 
     }
-
 
 }
