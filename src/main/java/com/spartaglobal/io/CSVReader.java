@@ -11,23 +11,22 @@ import java.util.ArrayList;
 
 public class CSVReader {
 
-    public static void cvsRead(){
+    public static void cvsRead(ArrayList<Employees> empList){
 
         String line = null;
-        ArrayList<Employees> employeesList = new ArrayList<>();
 
         try (BufferedReader in = new BufferedReader(new FileReader("EmployeeRecords.csv"));
              BufferedWriter out = new BufferedWriter(new FileWriter("EmployeeOutput.txt"))) {
             String headerLine = in.readLine();
             while ((line = in.readLine()) != null){
-                employeesList.add(DataHandler.employeePopulate(line));
+                empList.add(DataHandler.employeePopulate(line));
             }
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
 
-        DataHandler.employeeListDuplicateChecker(employeesList);
+        DataHandler.employeeListDuplicateChecker(empList);
 
     }
 
