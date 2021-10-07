@@ -17,7 +17,9 @@ public class MigrationApp {
 
 
         CSVReader.cvsRead(employeesList);
-        //DatabaseWriter.createDatabase(dbpath);
+        if(!DatabaseWriter.databaseExists(dbpath)) {
+            DatabaseWriter.createDatabase(dbpath);
+        }
         DatabaseWriter.createTable(employeeTable,dbpath);
 
 
