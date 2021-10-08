@@ -1,8 +1,6 @@
 package com.spartaglobal.model;
 
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 public class Employees {
@@ -39,11 +37,11 @@ public class Employees {
         this.employeeID = employeeID;
     }
 
-    public int getEmployeeID() {
+    public Integer getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmployeeID(int employeeID) {
+    public void setEmployeeID(Integer employeeID) {
         this.employeeID = employeeID;
     }
 
@@ -63,11 +61,11 @@ public class Employees {
         this.firstName = firstName;
     }
 
-    public char getMiddleInitial() {
+    public Character getMiddleInitial() {
         return middleInitial;
     }
 
-    public void setMiddleInitial(char middleInitial) {
+    public void setMiddleInitial(Character middleInitial) {
         this.middleInitial = middleInitial;
     }
 
@@ -79,11 +77,11 @@ public class Employees {
         this.lastName = lastName;
     }
 
-    public char getGender() {
+    public Character getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(Character gender) {
         this.gender = gender;
     }
 
@@ -111,11 +109,11 @@ public class Employees {
         this.dateOfJoining = dateOfJoining;
     }
 
-    public int getSalary() {
+    public Integer getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(Integer salary) {
         this.salary = salary;
     }
 

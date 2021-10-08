@@ -15,13 +15,15 @@ public class MigrationApp {
         final String employeeTable = "EMPLOYEE";
         ArrayList<Employees> employeesList = new ArrayList<>();
 
-
         CSVReader.cvsRead(employeesList);
         if(!DatabaseWriter.databaseExists(dbpath)) {
             DatabaseWriter.createDatabase(dbpath);
         }
         DatabaseWriter.createTable(employeeTable,dbpath);
-
+        long startTime = System.currentTimeMillis();
+        DatabaseWriter.populateTable(employeeTable,dbpath,employeesList);
+        long stopTime = System.currentTimeMillis();
+        System.out.println(stopTime - startTime);
 
     }
 
