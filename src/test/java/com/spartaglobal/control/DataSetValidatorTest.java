@@ -12,8 +12,7 @@ import java.text.ParseException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DataHandlerTest {
-
+class DataSetValidatorTest {
 
     @Test
     void dateFormatSqlTest() {
@@ -22,7 +21,7 @@ class DataHandlerTest {
         try (BufferedReader in = new BufferedReader(new FileReader("EmployeeRecords.csv"))) {
             String headerLine = in.readLine();
             line = in.readLine();
-            Employees em = DataHandler.employeePopulate(line);
+            Employees em = EmployeeListMaker.employeePopulate(line);
             Date dob2 = Date.valueOf("1982-9-21");
             assertEquals(dob2, em.getDateOfBirth());
         } catch (FileNotFoundException e) {

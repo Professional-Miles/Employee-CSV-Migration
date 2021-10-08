@@ -1,8 +1,7 @@
 package com.spartaglobal.migrationapp;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
-import com.spartaglobal.io.CSVReader;
-import com.spartaglobal.io.DatabaseWriter;
+import com.spartaglobal.io.*;
+import com.spartaglobal.model.DatabaseInfo;
 import com.spartaglobal.model.Employees;
 
 import java.util.ArrayList;
@@ -11,18 +10,18 @@ public class MigrationApp {
 
     public static void main(String[] args) {
 
-        final String dbpath = "employees";
-        final String employeeTable = "EMPLOYEE";
+        DatabaseInfo di = new DatabaseInfo();
         ArrayList<Employees> employeesList = new ArrayList<>();
 
         CSVReader.cvsRead(employeesList);
-        if(!DatabaseWriter.databaseExists(dbpath)) {
-            DatabaseWriter.createDatabase(dbpath);
-        }
-        DatabaseWriter.createTable(employeeTable,dbpath);
+
+        DatabaseCreator.createDatabase(di.getInfo());
+        TableCreator.createTable(di.getInfo());
+
         long startTime = System.currentTimeMillis();
-        DatabaseWriter.populateTable(employeeTable,dbpath,employeesList);
+        DatabaseWriter.populateTable(di.getInfo(),employeesList);
         long stopTime = System.currentTimeMillis();
+
         System.out.println(stopTime - startTime);
 
     }

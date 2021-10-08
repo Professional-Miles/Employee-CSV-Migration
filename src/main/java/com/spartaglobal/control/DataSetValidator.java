@@ -8,15 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class DataHandler {
-
-    public static Date dateFormatSql(String date) throws ParseException {
-
-        java.util.Date dateOriginal = new SimpleDateFormat("MM/dd/yyyy").parse(date);
-        java.sql.Date sqlDate = new java.sql.Date(dateOriginal.getTime());
-        return sqlDate;
-
-    }
+public class DataSetValidator {
 
     public static boolean isDataValid(String data) {
 
@@ -46,18 +38,6 @@ public class DataHandler {
         return validity;
     }
 
-    public static Employees employeePopulate (String data) throws ParseException {
-
-        String[] empList = data.split(",");
-        if (!isDataValid(data)) {
-            System.err.println("Data isn't valid!");
-            System.exit(1);
-        }
-        Employees emp = new Employees(Integer.valueOf(empList[0]), empList[1], empList[2], empList[3].charAt(0), empList[4], empList[5].charAt(0),
-                empList[6], dateFormatSql(empList[7]), dateFormatSql(empList[8]), Integer.valueOf(empList[9]));
-        return emp;
-    }
-
     public static void employeeListDuplicateChecker (ArrayList<Employees> data) {
 
         HashSet<Employees> uniqueElements = new HashSet<>(data);
@@ -70,6 +50,13 @@ public class DataHandler {
 
     }
 
+    public static Date dateFormatSql(String date) throws ParseException {
+
+        java.util.Date dateOriginal = new SimpleDateFormat("MM/dd/yyyy").parse(date);
+        java.sql.Date sqlDate = new java.sql.Date(dateOriginal.getTime());
+        return sqlDate;
+
+    }
 
 
 }

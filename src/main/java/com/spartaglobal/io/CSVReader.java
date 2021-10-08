@@ -1,7 +1,8 @@
 package com.spartaglobal.io;
 
 
-import com.spartaglobal.control.DataHandler;
+import com.spartaglobal.control.EmployeeListMaker;
+import com.spartaglobal.control.DataSetValidator;
 import com.spartaglobal.model.Employees;
 
 import java.io.*;
@@ -19,14 +20,14 @@ public class CSVReader {
              BufferedWriter out = new BufferedWriter(new FileWriter("EmployeeOutput.txt"))) {
             String headerLine = in.readLine();
             while ((line = in.readLine()) != null){
-                empList.add(DataHandler.employeePopulate(line));
+                empList.add(EmployeeListMaker.employeePopulate(line));
             }
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
 
-        DataHandler.employeeListDuplicateChecker(empList);
+        DataSetValidator.employeeListDuplicateChecker(empList);
 
     }
 
