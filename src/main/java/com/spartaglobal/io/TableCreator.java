@@ -13,10 +13,10 @@ public class TableCreator {
         try (Connection conn = DriverManager.getConnection(info[2]+info[0],info[3],info[4])) {
             if (conn != null) {
                 Statement statement = conn.createStatement();
-                if (DatabaseValidator.tableExists(info)) {
-                    statement.execute("DROP TABLE " + info[1]);
-                }
-                statement.executeUpdate("CREATE TABLE " + info[1] + " " +
+               // if (DatabaseValidator.tableExists(info)) {
+                    statement.execute("DROP TABLE IF EXISTS " + info[1]);
+                //}
+                statement.executeUpdate("CREATE TABLE " + info[1] +
                         "(ID INTEGER not NULL AUTO_INCREMENT, " +
                         "Employee_ID INTEGER not NULL, " +
                         "Title VARCHAR(5), " +
