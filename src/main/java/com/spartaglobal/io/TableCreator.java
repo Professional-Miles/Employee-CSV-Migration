@@ -18,7 +18,7 @@ public class TableCreator {
                 //}
                 statement.executeUpdate("CREATE TABLE " + info[1] +
                         "(ID INTEGER not NULL AUTO_INCREMENT, " +
-                        "Employee_ID INTEGER not NULL, " +
+                        "Employee_ID INTEGER not NULL UNIQUE, " +
                         "Title VARCHAR(5), " +
                         "First_Name VARCHAR(255), " +
                         "Middle_Initial CHAR(5), " +

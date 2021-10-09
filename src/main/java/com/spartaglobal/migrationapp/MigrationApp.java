@@ -3,12 +3,15 @@ package com.spartaglobal.migrationapp;
 import com.spartaglobal.io.*;
 import com.spartaglobal.model.DatabaseInfo;
 import com.spartaglobal.model.Employees;
+import com.spartaglobal.multi.MultiThreading;
 
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.concurrent.CountDownLatch;
 
 public class MigrationApp {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         DatabaseInfo di = new DatabaseInfo();
         ArrayList<Employees> employeesList = new ArrayList<>();
@@ -19,7 +22,13 @@ public class MigrationApp {
         TableCreator.createTable(di.getInfo());
 
         long startTime = System.currentTimeMillis();
-        DatabaseWriter.populateTable(di.getInfo(),employeesList);
+
+        for (int i = 0; i < (employeesList.size()/1000)+1; i++){
+
+            MultiThreading threader = new MultiThreading(di.getInfo(),employeesList,i);
+            threader.start();
+        }
+
         long stopTime = System.currentTimeMillis();
 
         System.out.println(stopTime - startTime);
