@@ -1,10 +1,13 @@
 package com.spartaglobal.io;
 
 import com.spartaglobal.model.Employees;
+import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DatabaseWriter {
+
+    private static final Logger log = Logger.getLogger("Database writer logger.");
 
     public static void populateTable(String[] info, ArrayList<Employees> data, int split){
         String sql = "INSERT INTO " + info[1] + " (Employee_ID, Title, First_Name, Middle_Initial, Last_Name, Gender, Email, Birth_Date, Join_Date, Salary) "
@@ -28,6 +31,7 @@ public class DatabaseWriter {
                     }
             }
         } catch (SQLException e) {
+            log.error("SQL Exception thrown.");
             e.printStackTrace();
         }
 

@@ -4,7 +4,6 @@ import com.spartaglobal.io.UserDaoInput;
 import com.spartaglobal.model.Employees;
 import com.spartaglobal.model.EmployeesDao;
 import org.apache.log4j.Logger;
-
 import java.sql.*;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -76,8 +75,9 @@ public class DaoWorker {
                 }
             }
         } catch (SQLException | ParseException e) {
+            log.error("SQL or Parsing Exception thrown.");
             e.printStackTrace();
-            log.error("SQl Exception or Parsing error occurred.");
+
         }
     }
 }
