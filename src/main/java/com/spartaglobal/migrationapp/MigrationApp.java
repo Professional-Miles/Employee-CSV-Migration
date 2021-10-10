@@ -7,6 +7,9 @@ import com.spartaglobal.model.Employees;
 import com.spartaglobal.multi.MultiThreading;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class MigrationApp {
 
@@ -20,12 +23,18 @@ public class MigrationApp {
         TableCreator.createTable(di.getInfo());
 
         long startTime = System.currentTimeMillis();
+        ExecutorService service = Executors.newFixedThreadPool((employeesList.size()/1000)+1);
         for (int i = 0; i < (employeesList.size()/1000)+1; i++){
-            MultiThreading threader = new MultiThreading(di.getInfo(),employeesList,i);
-            threader.start();
+            service.execute(new MultiThreading(di.getInfo(),employeesList,i));
+        }
+        service.shutdown();
+        try {
+            service.awaitTermination(70, TimeUnit.SECONDS);
+        } catch (InterruptedException e){
+
         }
         long stopTime = System.currentTimeMillis();
-        System.out.println(stopTime - startTime);
+        System.out.println("\nTime taken: " + ((stopTime - startTime)/1000) + " seconds.\n");
 
         UserDaoInput userInput = UserDaoInput.getInstance();
         userInput.getTaskQ();

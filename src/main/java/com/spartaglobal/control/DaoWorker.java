@@ -2,12 +2,11 @@ package com.spartaglobal.control;
 
 
 import com.spartaglobal.io.UserDaoInput;
-import com.spartaglobal.model.EmployeeDao;
 import com.spartaglobal.model.EmployeesDao;
 
 import java.sql.*;
 
-public class DaoWorker implements EmployeeDao {
+public class DaoWorker{
 
     EmployeesDao empDao = EmployeesDao.getInstance();
 
@@ -23,43 +22,19 @@ public class DaoWorker implements EmployeeDao {
                         empDao.getAllEmployees();
                         ps = conn.prepareStatement(empDao.getSql());
                         rs = ps.executeQuery();
+                        int i = 0;
                         while (rs.next()){
-                            System.out.println("Employee ID = " + rs.getString(2) + ", Name = " + rs.getString(3)+rs.getString(4)
+                            i++;
+                            System.out.println("ID = " + rs.getString(1) + " Employee ID = " + rs.getString(2) + ", Name = " + rs.getString(3)+rs.getString(4)
                             + " " + rs.getString(5) + " " + rs.getString(6) + ", Gender = " + rs.getString(7) + ", Email = " + rs.getString(8)
                             + ", Date of Birth = " + rs.getString(9) + ", Date of Joining = " + rs.getString(10) + ", Salary = " + rs.getString(11) + ".");
                         }
+                        System.out.println("Number of records: " + i);
                         break;
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-
-    @Override
-    public void getAllEmployees() {
-        empDao.getAllEmployees();
-
-    }
-
-    @Override
-    public void getEmployeeById() {
-
-    }
-
-    @Override
-    public void insertEmployee() {
-
-    }
-
-    @Override
-    public void updateEmployeeById() {
-
-    }
-
-    @Override
-    public void deleteEmployeeById() {
-
     }
 }

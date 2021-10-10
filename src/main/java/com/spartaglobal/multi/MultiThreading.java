@@ -4,7 +4,6 @@ import com.spartaglobal.io.DatabaseWriter;
 import com.spartaglobal.model.Employees;
 
 import java.util.ArrayList;
-import java.util.concurrent.CountDownLatch;
 
 public class MultiThreading extends Thread{
 
