@@ -1,5 +1,6 @@
 package com.spartaglobal.migrationapp;
 
+import com.spartaglobal.control.DaoWorker;
 import com.spartaglobal.io.*;
 import com.spartaglobal.model.DatabaseInfo;
 import com.spartaglobal.model.Employees;
@@ -13,23 +14,23 @@ public class MigrationApp {
 
         DatabaseInfo di = new DatabaseInfo();
         ArrayList<Employees> employeesList = new ArrayList<>();
-
         CSVReader.cvsRead(employeesList);
 
         DatabaseCreator.createDatabase(di.getInfo());
         TableCreator.createTable(di.getInfo());
 
         long startTime = System.currentTimeMillis();
-
         for (int i = 0; i < (employeesList.size()/1000)+1; i++){
-
             MultiThreading threader = new MultiThreading(di.getInfo(),employeesList,i);
             threader.start();
         }
-
         long stopTime = System.currentTimeMillis();
-
         System.out.println(stopTime - startTime);
+
+        UserDaoInput userInput = UserDaoInput.getInstance();
+        userInput.getTaskQ();
+        DaoWorker.worker(di.getInfo(), userInput);
+
 
     }
 

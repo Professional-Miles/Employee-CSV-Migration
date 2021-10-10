@@ -16,7 +16,7 @@ public class CSVReader {
 
         String line = null;
 
-        try (BufferedReader in = new BufferedReader(new FileReader("EmployeeRecordsLarge.csv"));
+        try (BufferedReader in = new BufferedReader(new FileReader("EmployeeRecords.csv"));
              BufferedWriter out = new BufferedWriter(new FileWriter("EmployeeOutput.txt"))) {
             String headerLine = in.readLine();
             while ((line = in.readLine()) != null){

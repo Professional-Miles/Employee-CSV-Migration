@@ -6,6 +6,14 @@ public class EmployeesDao implements EmployeeDao {
     private String sqlDo;
     private String sqlWhat;
     private String sqlWhere;
+    private static EmployeesDao getDao = null;
+
+    public static EmployeesDao getInstance(){
+        if (getDao == null){
+            getDao = new EmployeesDao();
+        }
+        return getDao;
+    }
 
     public String getSql() {
         return sqlQ;
