@@ -15,14 +15,11 @@ public class CSVReader {
     public static void cvsRead(ArrayList<Employees> empList){
 
         String line = null;
-
-        try (BufferedReader in = new BufferedReader(new FileReader("EmployeeRecords.csv"));
-             BufferedWriter out = new BufferedWriter(new FileWriter("EmployeeOutput.txt"))) {
+        try (BufferedReader in = new BufferedReader(new FileReader("EmployeeRecords.csv")) ){
             String headerLine = in.readLine();
             while ((line = in.readLine()) != null){
                 empList.add(EmployeeListMaker.employeePopulate(line));
             }
-
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
