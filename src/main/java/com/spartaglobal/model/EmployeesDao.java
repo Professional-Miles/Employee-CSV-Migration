@@ -1,7 +1,5 @@
 package com.spartaglobal.model;
 
-import com.spartaglobal.model.EmployeeDao;
-
 public class EmployeesDao implements EmployeeDao {
 
     private String sqlQ;
