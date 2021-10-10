@@ -19,5 +19,4 @@ public class DatabaseCreator {
                 e.printStackTrace();
             }
         }
-
     }
