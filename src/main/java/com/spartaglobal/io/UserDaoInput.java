@@ -79,7 +79,7 @@ public class UserDaoInput {
             case ("Insert"):
                 System.out.print("Input employee record in the order: Employee_ID, Title, First_Name, Middle_Initial, Last_Name, Gender, Email, Birth_Date, Join_Date, Salary. \n : ");
                 String data = scanner.nextLine();
-                if (!DataSetValidator.isDataValid(data)){
+                if (DataSetValidator.isDataValid(data)){
                     System.err.println("Data is not valid! Please try again...");
                     getWhatQ();
                 }

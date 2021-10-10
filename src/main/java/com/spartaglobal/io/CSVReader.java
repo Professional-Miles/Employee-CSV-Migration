@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class CSVReader {
 
     public static void cvsRead(ArrayList<Employees> empList){
-        String line = null;
-        try (BufferedReader in = new BufferedReader(new FileReader("EmployeeRecordsLarge.csv"))){
-            String headerLine = in.readLine();
+        String line;
+        try (BufferedReader in = new BufferedReader(new FileReader("EmployeeRecords.csv"))){
+            in.readLine();
             while ((line = in.readLine()) != null){
                 empList.add(EmployeeListMaker.employeePopulate(line));
             }

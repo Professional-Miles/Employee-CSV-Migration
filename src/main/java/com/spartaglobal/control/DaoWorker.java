@@ -17,35 +17,35 @@ public class DaoWorker {
                 Statement statement = conn.createStatement();
                 PreparedStatement ps;
                 ResultSet rs;
-                switch(udi.getTask()){
-                    case "GetAll":
+                switch (udi.getTask()) {
+                    case "GetAll" -> {
                         empDao.getAllEmployees();
                         ps = conn.prepareStatement(empDao.getSql());
                         rs = ps.executeQuery();
                         int i = 0;
-                        while (rs.next()){
+                        while (rs.next()) {
                             i++;
                             empQuery.add(EmployeeListMaker.employeePopulateQuery(rs.getString(2) + "," + rs.getString(3)
                                     + "," + rs.getString(4) + "," + rs.getString(5) + "," + rs.getString(6)
-                                    + "," + rs.getString(7) + "," + rs.getString(8)+ "," + rs.getString(9)
+                                    + "," + rs.getString(7) + "," + rs.getString(8) + "," + rs.getString(9)
                                     + "," + rs.getString(10) + "," + rs.getString(11)));
                         }
                         System.out.println("Number of records: " + i);
-                        break;
-                    case "Get":
+                    }
+                    case "Get" -> {
                         empDao.getEmployeeById();
                         ps = conn.prepareStatement(empDao.getSql() + " " + empDao.getSqlWhere() + " " + udi.getWhere());
                         rs = ps.executeQuery();
                         rs.next();
                         empQuery.add(EmployeeListMaker.employeePopulateQuery(rs.getString(2) + "," + rs.getString(3)
                                 + "," + rs.getString(4) + "," + rs.getString(5) + "," + rs.getString(6)
-                                + "," + rs.getString(7) + "," + rs.getString(8)+ "," + rs.getString(9)
+                                + "," + rs.getString(7) + "," + rs.getString(8) + "," + rs.getString(9)
                                 + "," + rs.getString(10) + "," + rs.getString(11)));
-                        break;
-                    case "Insert":
+                    }
+                    case "Insert" -> {
                         empDao.insertEmployee();
-                        PreparedStatement pst = conn.prepareStatement(empDao.getSqlDo()+empDao.getSqlWhat(), statement.RETURN_GENERATED_KEYS);
-                        String[] empList =  udi.getWhat().split(",");
+                        PreparedStatement pst = conn.prepareStatement(empDao.getSqlDo() + empDao.getSqlWhat(), statement.RETURN_GENERATED_KEYS);
+                        String[] empList = udi.getWhat().split(",");
                         Employees emp = new Employees(Integer.valueOf(empList[0]), empList[1], empList[2], empList[3].charAt(0), empList[4], empList[5].charAt(0),
                                 empList[6], DataSetValidator.dateFormatSql(empList[7]), DataSetValidator.dateFormatSql(empList[8]), Integer.valueOf(empList[9]));
                         pst.setString(1, emp.getEmployeeID().toString());
@@ -59,17 +59,17 @@ public class DaoWorker {
                         pst.setString(9, emp.getDateOfJoining().toString());
                         pst.setString(10, emp.getSalary().toString());
                         pst.executeUpdate();
-                        break;
-                    case "Update":
+                    }
+                    case "Update" -> {
                         empDao.updateEmployeeById();
                         ps = conn.prepareStatement(empDao.getSqlDo() + empDao.getSqlWhat() + udi.getWhat() + " " + empDao.getSqlWhere() + udi.getWhere());
                         ps.executeUpdate();
-                        break;
-                    case "Delete":
+                    }
+                    case "Delete" -> {
                         empDao.deleteEmployeeById();
                         ps = conn.prepareStatement(empDao.getSqlDo() + empDao.getSqlWhere() + udi.getWhere());
                         ps.executeUpdate();
-                        break;
+                    }
                 }
             }
         } catch (SQLException | ParseException e) {
