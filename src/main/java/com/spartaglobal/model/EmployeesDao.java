@@ -37,7 +37,7 @@ public class EmployeesDao implements EmployeeDao {
     @Override
     public void insertEmployee() {
         this.sqlDo = "INSERT INTO EMPLOYEE (Employee_ID, Title, First_Name, Middle_Initial, Last_Name, Gender, Email, Birth_Date, Join_Date, Salary) ";
-        this.sqlWhat = "";
+        this.sqlWhat = "VALUES ";
     }
 
     @Override
