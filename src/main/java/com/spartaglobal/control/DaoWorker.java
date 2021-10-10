@@ -75,7 +75,7 @@ public class DaoWorker {
                 }
             }
         } catch (SQLException | ParseException e) {
-            log.error("SQL or Parsing Exception thrown.");
+            log.error("SQL or Parsing Exception thrown. \n");
             e.printStackTrace();
 
         }

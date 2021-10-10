@@ -31,7 +31,7 @@ public class DatabaseWriter {
                     }
             }
         } catch (SQLException e) {
-            log.error("SQL Exception thrown.");
+            log.error("SQL Exception thrown. \n");
             e.printStackTrace();
         }
 

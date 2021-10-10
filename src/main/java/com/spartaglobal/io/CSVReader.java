@@ -20,7 +20,7 @@ public class CSVReader {
                 empList.add(EmployeeListMaker.employeePopulate(line));
             }
         } catch (IOException | ParseException e) {
-            log.error("IO or Parse Exception thrown.");
+            log.error("IO or Parse Exception thrown. \n");
             e.printStackTrace();
         }
         DataSetValidator.employeeListDuplicateChecker(empList);

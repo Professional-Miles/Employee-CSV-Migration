@@ -19,7 +19,7 @@ public class DatabaseCreator {
                     conn.commit();
                 }
             } catch (SQLException e) {
-                log.error("SQL Exception thrown.");
+                log.error("SQL Exception thrown. \n");
                 e.printStackTrace();
             }
         }

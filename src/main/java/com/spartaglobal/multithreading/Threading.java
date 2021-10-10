@@ -22,10 +22,10 @@ public class Threading {
         try {
            if (!service.awaitTermination(70, TimeUnit.SECONDS)){
                System.out.println("Threads timed out.");
-               log.warn("The multi thread writing timed out.");
+               log.warn("The multi thread writing timed out. \n");
            }
         } catch (InterruptedException e){
-            log.error("Interrupted Exception thrown.");
+            log.error("Interrupted Exception thrown. \n");
             e.printStackTrace();
         }
         long stopTime = System.currentTimeMillis();

@@ -13,7 +13,7 @@ public class EmployeeListMaker {
         String[] empList = data.split(",");
         if (DataSetValidator.isDataValid(data)) {
             System.err.println("Data isn't valid!");
-            log.error("The data to be added to the Employee object was not valid or Parse Exception thrown.");
+            log.error("The data to be added to the Employee object was not valid or Parse Exception thrown. \n");
             System.exit(1);
         }
         return new Employees(Integer.valueOf(empList[0]), empList[1], empList[2], empList[3].charAt(0), empList[4], empList[5].charAt(0),

@@ -15,7 +15,7 @@ public class CSVWrite {
                 out.write(employees.toString());
             }
         } catch (IOException e) {
-            log.error("IO Exception thrown.");
+            log.error("IO Exception thrown. \n");
             e.printStackTrace();
         }
     }

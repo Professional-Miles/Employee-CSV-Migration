@@ -66,7 +66,7 @@ public class UserDaoInput implements DaoInputInterface{
             }
             default -> {
                 System.out.println("\n Enter a valid input! \n ");
-                log.warn("User did not enter a valid input.");
+                log.warn("User did not enter a valid input. \n");
                 getTaskQ();
             }
         }
@@ -80,7 +80,7 @@ public class UserDaoInput implements DaoInputInterface{
                 String data = scanner.nextLine();
                 if (DataSetValidator.isDataValid(data)) {
                     System.err.println("Data is not valid! Please try again...");
-                    log.error("The data the user entered is not valid.");
+                    log.error("The data the user entered is not valid. \n");
                     getWhatQ();
                 }
                 this.what = data;
@@ -98,7 +98,7 @@ public class UserDaoInput implements DaoInputInterface{
         String data = scanner.nextLine();
         if (!(Integer.parseInt(data) > 0)){
             System.err.println("Data is not valid! Please try again...");
-            log.error("The data the user entered is not valid.");
+            log.error("The data the user entered is not valid. \n");
             getWhatQ();
         }
         this.where = data;
