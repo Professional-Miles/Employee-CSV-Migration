@@ -6,8 +6,6 @@ import com.spartaglobal.model.Employees;
 import com.spartaglobal.multi.MultiThreading;
 
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.concurrent.CountDownLatch;
 
 public class MigrationApp {
 
