@@ -3,7 +3,7 @@ package com.spartaglobal.io;
 import com.spartaglobal.control.DataSetValidator;
 import java.util.Scanner;
 
-public class UserDaoInput {
+public class UserDaoInput implements DaoInputInterface{
 
     private String task;
     private String what;

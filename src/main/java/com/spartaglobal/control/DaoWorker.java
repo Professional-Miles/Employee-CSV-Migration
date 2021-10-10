@@ -3,12 +3,15 @@ package com.spartaglobal.control;
 import com.spartaglobal.io.UserDaoInput;
 import com.spartaglobal.model.Employees;
 import com.spartaglobal.model.EmployeesDao;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.text.ParseException;
 import java.util.ArrayList;
 
 public class DaoWorker {
+
+    private static final Logger log = Logger.getLogger("Dao Worker class logger.");
 
     public static void worker(String[] info, UserDaoInput udi, ArrayList<Employees> empQuery){
         EmployeesDao empDao = EmployeesDao.getInstance();
@@ -74,6 +77,7 @@ public class DaoWorker {
             }
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
+            log.error("SQl Exception or Parsing error occurred.");
         }
     }
 }
