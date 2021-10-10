@@ -119,7 +119,6 @@ public class Employees {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(employeeID);
     }
 
@@ -131,8 +130,6 @@ public class Employees {
         if (o == null || o.getClass() != this.getClass()) {
             return false;
         }
-
-        Employees guest = (Employees) o;
         return Objects.equals(employeeID, ((Employees) o).employeeID);
     }
 

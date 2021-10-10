@@ -2,14 +2,13 @@ package com.spartaglobal.multithreading;
 
 import com.spartaglobal.io.DatabaseWriter;
 import com.spartaglobal.model.Employees;
-
 import java.util.ArrayList;
 
 public class Task extends Thread{
 
     private String[] info;
     private ArrayList<Employees> empList;
-    private int split;
+    private final int split;
 
     public Task(String[] info, ArrayList<Employees> empList, int split){
         this.info = info;
@@ -21,9 +20,7 @@ public class Task extends Thread{
     public void run() {
         DatabaseWriter.populateTable(info,empList, split);
     }
-
-
-
+    
     public String[] getInfo() {
         return info;
     }

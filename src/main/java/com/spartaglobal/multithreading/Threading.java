@@ -18,13 +18,14 @@ public class Threading {
         }
         service.shutdown();
         try {
-            service.awaitTermination(70, TimeUnit.SECONDS);
+           if (!service.awaitTermination(70, TimeUnit.SECONDS)){
+               System.out.println("Threads timed out.");
+           }
         } catch (InterruptedException e){
-
+            e.printStackTrace();
         }
         long stopTime = System.currentTimeMillis();
         System.out.println("\nTime taken: " + ((stopTime - startTime)/1000) + " seconds.\n");
-
     }
 
 }
