@@ -1,18 +1,14 @@
 package com.spartaglobal.io;
 
-import com.mysql.cj.protocol.Resultset;
 import com.spartaglobal.model.Employees;
-
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DatabaseWriter {
 
     public static void populateTable(String[] info, ArrayList<Employees> data, int split){
-
         String sql = "INSERT INTO " + info[1] + " (Employee_ID, Title, First_Name, Middle_Initial, Last_Name, Gender, Email, Birth_Date, Join_Date, Salary) "
                         + "VALUES (?,?,?,?,?,?,?,?,?,?)";
-
         try (Connection conn = DriverManager.getConnection(info[2]+info[0],info[3],info[4])) {
             if (conn != null) {
                 Statement statement = conn.createStatement();
@@ -36,7 +32,4 @@ public class DatabaseWriter {
         }
 
     }
-
-
-
 }

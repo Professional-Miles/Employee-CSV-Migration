@@ -30,6 +30,7 @@ public class DatabaseValidator {
             DatabaseMetaData dbm = conn.getMetaData();
             rs = dbm.getTables(null,null,info[1],null);
         }
+        conn.close();
         return rs.next();
     }
 

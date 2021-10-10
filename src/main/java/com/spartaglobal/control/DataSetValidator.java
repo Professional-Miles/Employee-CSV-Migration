@@ -1,7 +1,6 @@
 package com.spartaglobal.control;
 
 import com.spartaglobal.model.Employees;
-
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +10,6 @@ import java.util.HashSet;
 public class DataSetValidator {
 
     public static boolean isDataValid(String data) {
-
         boolean validity = true;
         String[] empList = data.split(",");
         if (Integer.valueOf(empList[0]) < 0)
@@ -34,12 +32,10 @@ public class DataSetValidator {
             validity = false;
         if (Integer.valueOf(empList[9]) < 0)
             validity = false;
-
         return validity;
     }
 
     public static void employeeListDuplicateChecker (ArrayList<Employees> data) {
-
         HashSet<Employees> uniqueElements = new HashSet<>(data);
         int nSize = uniqueElements.size();
         int oSize = data.size();
@@ -47,15 +43,12 @@ public class DataSetValidator {
         data.addAll(uniqueElements);
         int dupeAmount = oSize - nSize;
         System.out.println("Original number of Employee entries: " + oSize + '\n' + "Valid number of Employee entries: " + nSize + '\n' + "Number of duplicate entries: " + dupeAmount);
-
     }
 
     public static Date dateFormatSql(String date) throws ParseException {
-
         java.util.Date dateOriginal = new SimpleDateFormat("MM/dd/yyyy").parse(date);
         java.sql.Date sqlDate = new java.sql.Date(dateOriginal.getTime());
         return sqlDate;
-
     }
 
 

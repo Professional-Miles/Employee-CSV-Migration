@@ -1,6 +1,5 @@
 package com.spartaglobal.io;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,7 +13,7 @@ public class DatabaseCreator {
                     Statement statement = conn.createStatement();
                     statement.execute("CREATE DATABASE IF NOT EXISTS " + info[0]);
                     conn.setAutoCommit(false);
-                    conn.commit(); // now the database physically exists
+                    conn.commit();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

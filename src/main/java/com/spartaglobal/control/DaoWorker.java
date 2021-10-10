@@ -1,6 +1,5 @@
 package com.spartaglobal.control;
 
-
 import com.spartaglobal.io.UserDaoInput;
 import com.spartaglobal.model.Employees;
 import com.spartaglobal.model.EmployeesDao;
@@ -9,17 +8,15 @@ import java.sql.*;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-public class DaoWorker{
-
-    EmployeesDao empDao = EmployeesDao.getInstance();
+public class DaoWorker {
 
     public static void worker(String[] info, UserDaoInput udi, ArrayList<Employees> empQuery){
         EmployeesDao empDao = EmployeesDao.getInstance();
         try (Connection conn = DriverManager.getConnection(info[2]+info[0],info[3],info[4])) {
             if (conn != null) {
                 Statement statement = conn.createStatement();
-                PreparedStatement ps = null;
-                ResultSet rs = null;
+                PreparedStatement ps;
+                ResultSet rs;
                 switch(udi.getTask()){
                     case "GetAll":
                         empDao.getAllEmployees();
