@@ -28,12 +28,40 @@ public class DaoWorker{
                         int i = 0;
                         while (rs.next()){
                             i++;
-                            empQuery.add(EmployeeListMaker.employeePopulateQuery(rs.getString(2) + "," + rs.getString(3) + "," + rs.getString(4) + "," + rs.getString(5) + "," + rs.getString(6) + "," + rs.getString(7) + "," + rs.getString(8)+ "," + rs.getString(9) + "," + rs.getString(10) + "," + rs.getString(11)));
-//                            System.out.println("ID = " + rs.getString(1) + " Employee ID = " + rs.getString(2) + ", Name = " + rs.getString(3)+rs.getString(4)
-//                            + " " + rs.getString(5) + " " + rs.getString(6) + ", Gender = " + rs.getString(7) + ", Email = " + rs.getString(8)
-//                            + ", Date of Birth = " + rs.getString(9) + ", Date of Joining = " + rs.getString(10) + ", Salary = " + rs.getString(11) + ".");
+                            empQuery.add(EmployeeListMaker.employeePopulateQuery(rs.getString(2) + "," + rs.getString(3)
+                                    + "," + rs.getString(4) + "," + rs.getString(5) + "," + rs.getString(6)
+                                    + "," + rs.getString(7) + "," + rs.getString(8)+ "," + rs.getString(9)
+                                    + "," + rs.getString(10) + "," + rs.getString(11)));
                         }
                         System.out.println("Number of records: " + i);
+                        break;
+                    case "Get":
+                        empDao.getEmployeeById();
+                        ps = conn.prepareStatement(empDao.getSql() + " " + empDao.getSqlWhere() + " " + udi.getWhere());
+                        rs = ps.executeQuery();
+                        rs.next();
+                        empQuery.add(EmployeeListMaker.employeePopulateQuery(rs.getString(2) + "," + rs.getString(3)
+                                + "," + rs.getString(4) + "," + rs.getString(5) + "," + rs.getString(6)
+                                + "," + rs.getString(7) + "," + rs.getString(8)+ "," + rs.getString(9)
+                                + "," + rs.getString(10) + "," + rs.getString(11)));
+                        break;
+                    case "Insert":
+                        empDao.insertEmployee();
+                        PreparedStatement pst = conn.prepareStatement(empDao.getSqlDo()+empDao.getSqlWhat(), statement.RETURN_GENERATED_KEYS);
+                        String[] empList =  udi.getWhat().split(",");
+                        Employees emp = new Employees(Integer.valueOf(empList[0]), empList[1], empList[2], empList[3].charAt(0), empList[4], empList[5].charAt(0),
+                                empList[6], DataSetValidator.dateFormatSql(empList[7]), DataSetValidator.dateFormatSql(empList[8]), Integer.valueOf(empList[9]));
+                        pst.setString(1, emp.getEmployeeID().toString());
+                        pst.setString(2, emp.getNamePrefix());
+                        pst.setString(3, emp.getFirstName());
+                        pst.setString(4, emp.getMiddleInitial().toString());
+                        pst.setString(5, emp.getLastName());
+                        pst.setString(6, emp.getGender().toString());
+                        pst.setString(7, emp.getEmail());
+                        pst.setString(8, emp.getDateOfBirth().toString());
+                        pst.setString(9, emp.getDateOfJoining().toString());
+                        pst.setString(10, emp.getSalary().toString());
+                        pst.executeUpdate();
                         break;
                 }
             }

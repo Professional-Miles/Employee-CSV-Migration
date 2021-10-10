@@ -13,13 +13,13 @@ public class MigrationApp {
     public static void main(String[] args) throws InterruptedException {
 
         DatabaseInfo di = new DatabaseInfo();
-        ArrayList<Employees> employeesList = new ArrayList<>();
-        CSVReader.cvsRead(employeesList);
-
-        DatabaseCreator.createDatabase(di.getInfo());
-        TableCreator.createTable(di.getInfo());
-
-        Threading.doThreading(di.getInfo(), employeesList);
+//        ArrayList<Employees> employeesList = new ArrayList<>();
+//        CSVReader.cvsRead(employeesList);
+//
+//        DatabaseCreator.createDatabase(di.getInfo());
+//        TableCreator.createTable(di.getInfo());
+//
+//        Threading.doThreading(di.getInfo(), employeesList);
 
         ArrayList<Employees> empQuery = new ArrayList<>();
         UserDaoInput userInput = UserDaoInput.getInstance();

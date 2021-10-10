@@ -22,15 +22,24 @@ public class UserDaoInput {
         return this.task;
     }
 
+    public String getWhat(){
+        return this.what;
+    }
+
+    public String getWhere(){
+        return this.where;
+    }
+
 
     public void getTaskQ(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("What would you like to do? \n " +
+        System.out.print("What would you like to do? \n " +
                 "1. Get all employee records. \n " +
                 "2. Get employee record via ID. \n " +
                 "3. Insert employee record into table. \n " +
                 "4. Update employee record via ID. \n " +
                 "5. Delete employee record via ID. \n " +
+                "6. Exit the program. \n " +
                 ": ");
         String input = scanner.nextLine();
         switch (input){
@@ -39,7 +48,7 @@ public class UserDaoInput {
                break;
             case "2":
                 this.task = "Get";
-
+                getWhereQ();
                 break;
             case "3":
                 this.task = "Insert";
@@ -53,8 +62,12 @@ public class UserDaoInput {
                 this.task = "Delete";
 
                 break;
+            case "6":
+                System.out.println(" \n Bye...");
+                System.exit(0);
             default:
-                System.err.println("Enter a valid input!");
+                System.out.println("\n Enter a valid input! \n ");
+
                 getTaskQ();
                 break;
         }
@@ -64,7 +77,7 @@ public class UserDaoInput {
         Scanner scanner = new Scanner(System.in);
         switch (this.task){
             case ("Insert"):
-                System.out.println("Input employee record in the order: Employee_ID, Title, First_Name, Middle_Initial, Last_Name, Gender, Email, Birth_Date, Join_Date, Salary .");
+                System.out.print("Input employee record in the order: Employee_ID, Title, First_Name, Middle_Initial, Last_Name, Gender, Email, Birth_Date, Join_Date, Salary. \n : ");
                 String data = scanner.nextLine();
                 if (!DataSetValidator.isDataValid(data)){
                     System.err.println("Data is not valid! Please try again...");
@@ -78,20 +91,20 @@ public class UserDaoInput {
         }
     }
 
-    public  void getWhereQ(){
+    public void getWhereQ(){
         Scanner scanner = new Scanner(System.in);
-        switch (this.task){
-            case ("Insert"):
-
-                break;
-            case ("Update"):
-
-                break;
+        System.out.print("Enter the ID number of the employee : ");
+        String data = scanner.nextLine();
+        if (!(Integer.valueOf(data) > 0)){
+            System.err.println("Data is not valid! Please try again...");
+            getWhatQ();
         }
+        this.where = data;
+        }
+
+
+
+
     }
 
 
-
-
-
-}

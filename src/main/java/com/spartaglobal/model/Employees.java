@@ -138,8 +138,7 @@ public class Employees {
 
     @Override
     public String toString() {
-        return "Employees { '\n'" +
-                "employeeID = " + employeeID +
+        return "EmployeeID = " + employeeID +
                 ", namePrefix = '" + namePrefix + '\'' +
                 ", firstName = '" + firstName + '\'' +
                 ", middleInitial = " + middleInitial +
@@ -148,7 +147,6 @@ public class Employees {
                 ", email = '" + email + '\'' +
                 ", dateOfBirth = " + dateOfBirth +
                 ", dateOfJoining = " + dateOfJoining +
-                ", salary = " + salary +
-                '}';
+                ", salary = " + salary + "\n";
     }
 }
