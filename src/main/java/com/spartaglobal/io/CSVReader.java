@@ -15,7 +15,7 @@ public class CSVReader {
     public static void cvsRead(ArrayList<Employees> empList){
 
         String line = null;
-        try (BufferedReader in = new BufferedReader(new FileReader("EmployeeRecords.csv")) ){
+        try (BufferedReader in = new BufferedReader(new FileReader("EmployeeRecordsLarge.csv"))){
             String headerLine = in.readLine();
             while ((line = in.readLine()) != null){
                 empList.add(EmployeeListMaker.employeePopulate(line));

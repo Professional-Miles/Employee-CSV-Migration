@@ -68,6 +68,11 @@ public class DaoWorker{
                         ps = conn.prepareStatement(empDao.getSqlDo() + empDao.getSqlWhat() + udi.getWhat() + " " + empDao.getSqlWhere() + udi.getWhere());
                         ps.executeUpdate();
                         break;
+                    case "Delete":
+                        empDao.deleteEmployeeById();
+                        ps = conn.prepareStatement(empDao.getSqlDo() + empDao.getSqlWhere() + udi.getWhere());
+                        ps.executeUpdate();
+                        break;
                 }
             }
         } catch (SQLException | ParseException e) {

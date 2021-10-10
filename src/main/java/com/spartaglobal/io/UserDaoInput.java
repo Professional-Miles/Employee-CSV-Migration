@@ -68,7 +68,6 @@ public class UserDaoInput {
                 System.exit(0);
             default:
                 System.out.println("\n Enter a valid input! \n ");
-
                 getTaskQ();
                 break;
         }
