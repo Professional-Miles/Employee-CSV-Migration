@@ -57,10 +57,11 @@ public class UserDaoInput {
             case "4":
                 this.task = "Update";
                 getWhatQ();
+                getWhereQ();
                 break;
             case "5":
                 this.task = "Delete";
-
+                getWhereQ();
                 break;
             case "6":
                 System.out.println(" \n Bye...");
@@ -86,7 +87,8 @@ public class UserDaoInput {
                 this.what = data;
                 break;
             case ("Update"):
-
+                System.out.print("Input columns to be updated and with what values separated with a comma(,). E.g. Last_Name = 'Lux', Gender = 'M'. \n : ");
+                this.what = scanner.nextLine();
                 break;
         }
     }
@@ -101,9 +103,6 @@ public class UserDaoInput {
         }
         this.where = data;
         }
-
-
-
 
     }
 

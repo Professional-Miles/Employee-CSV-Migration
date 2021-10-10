@@ -63,6 +63,11 @@ public class DaoWorker{
                         pst.setString(10, emp.getSalary().toString());
                         pst.executeUpdate();
                         break;
+                    case "Update":
+                        empDao.updateEmployeeById();
+                        ps = conn.prepareStatement(empDao.getSqlDo() + empDao.getSqlWhat() + udi.getWhat() + " " + empDao.getSqlWhere() + udi.getWhere());
+                        ps.executeUpdate();
+                        break;
                 }
             }
         } catch (SQLException | ParseException e) {
