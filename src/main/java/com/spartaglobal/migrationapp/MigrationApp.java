@@ -20,11 +20,14 @@ public class MigrationApp {
         DatabaseInfo di = new DatabaseInfo();
         ArrayList<Employees> employeesList = new ArrayList<>();
         CSVReader.cvsRead(employeesList);
+        boolean tableIs = true;
 
         DatabaseCreator.createDatabase(di.getInfo());
-        TableCreator.createTable(di.getInfo());
+        tableIs = TableCreator.createTable(di.getInfo(), tableIs);
 
-        Threading.doThreading(di.getInfo(), employeesList);
+        if (tableIs) {
+            Threading.doThreading(di.getInfo(), employeesList);
+        }
 
         ArrayList<Employees> empQuery = new ArrayList<>();
         UserDaoInput userInput = UserDaoInput.getInstance();
